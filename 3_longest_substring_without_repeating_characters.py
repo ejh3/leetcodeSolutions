@@ -18,8 +18,7 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 """
 
 """
-My solutions use a sliding window. It might get a bit better if you
-use a hashtable to find when instead 
+Sliding window solution with iteration through string to find repeated char.
 """
 # def lengthOfLongestSubstring(s: str) -> int:
 #     max_len, lidx = 0, 0
@@ -31,6 +30,11 @@ use a hashtable to find when instead
 #         max_len = max(max_len, ridx - lidx + 1)
 #     return max_len
 
+"""
+Sliding window solution with hashtable to find repeated char.
+Theoretically faster but doesn't seem to make much difference,
+at least on small strings.
+"""
 def lengthOfLongestSubstring(s: str) -> int:
     max_len, l_idx = 0, 0
     last_seen = dict()
@@ -47,9 +51,10 @@ test_cases = {
     "pwwkew": 3,
     "abcadcef": 5
 }
-for string, answer in test_cases.items():
-    ret = lengthOfLongestSubstring(s=string)
+for args, answer in test_cases.items():
+    ret = lengthOfLongestSubstring(args)
     if ret == answer:
-        print("Correct:", answer, "String:", string, sep="\t")
+        print("Correct:", answer, "Input:", args, sep="\t")
     else:
-        print("Incorrect:", ret, "Correct:", answer, "String:", string, sep="\t")
+        print("Incorrect:", ret, "Correct:", answer, "Input:", args, sep="\t")
+
